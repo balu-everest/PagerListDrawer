@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">PagerListDrawer</string>
+    <string name="calllist_screen">CallList Screen</string>
+    <string name="chatlist_screen">Chat List Screen</string>
+    <string name="contact_list_screen">Contact List Screen</string>
+</resources>
