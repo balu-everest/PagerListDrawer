@@ -3,6 +3,7 @@ package com.everest.pagerlistdrawer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,7 @@ import com.google.gson.Gson
 class MainActivity : AppCompatActivity() {
 
     val TAG = "MainActivity"
+    lateinit var actionBarToggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun handleNavigationDrawer() {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
-        val actionBarToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        actionBarToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(actionBarToggle)
         actionBarToggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -57,5 +59,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun showListOfUsers(data: List<User>) {
         Log.d(TAG, "showListOfUsers : ${Gson().toJson(data)}")
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (actionBarToggle.onOptionsItemSelected(item)){
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
