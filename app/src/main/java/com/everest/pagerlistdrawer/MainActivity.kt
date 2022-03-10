@@ -3,6 +3,8 @@ package com.everest.pagerlistdrawer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.everest.pagerlistdrawer.ui.User
@@ -33,6 +35,16 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        handleNavigationDrawer()
+
+    }
+
+    private fun handleNavigationDrawer() {
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
+        val actionBarToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
+        drawerLayout.addDrawerListener(actionBarToggle)
+        actionBarToggle.syncState()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun showLoadingScreen() {

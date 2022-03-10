@@ -2,4 +2,6 @@
     <string name="app_name">PagerListDrawer</string>
     <string name="calllist_screen">CallList Screen</string>
     <string name="chatlist_screen">Chat List Screen</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
