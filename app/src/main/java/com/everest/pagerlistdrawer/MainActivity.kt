@@ -3,6 +3,7 @@ package com.everest.pagerlistdrawer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
@@ -61,13 +62,27 @@ class MainActivity : AppCompatActivity() {
         Log.d(TAG, "showListOfUsers : ${Gson().toJson(data)}")
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.home_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.nav_home -> showToast("Show Home Screen")
-            R.id.nav_gallery -> showToast("Show Gallery Screen")
-            R.id.nav_slideshow -> showToast("Show SlideShow Screen")
+        when (item.itemId) {
+            R.id.nav_home -> {
+                showToast("Show Home Screen")
+                return true
+            }
+            R.id.nav_gallery -> {
+                showToast("Show Gallery Screen")
+                return true
+            }
+            R.id.nav_slideshow -> {
+                showToast("Show SlideShow Screen")
+                return true
+            }
         }
-        if (actionBarToggle.onOptionsItemSelected(item)){
+        if (actionBarToggle.onOptionsItemSelected(item)) {
             return true
         }
         return super.onOptionsItemSelected(item)
