@@ -31,7 +31,7 @@ class CustomViewModel : ViewModel() {
             _uiState.postValue(UIState.Loading)
             try {
                 val users = userRepository.getUsers()
-                _uiState.postValue(UIState.Data(users)gs)
+                _uiState.postValue(UIState.Data(users))
             } catch (e: Exception) {
                 _uiState.postValue(UIState.Error(e.localizedMessage))
             }
