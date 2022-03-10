@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
-import com.everest.pagerlistdrawer.network.model.UserRepository
-import com.everest.pagerlistdrawer.network.model.UsersAPI
 import com.everest.pagerlistdrawer.ui.User
 import com.google.android.material.tabs.TabLayout
 import com.google.gson.Gson
