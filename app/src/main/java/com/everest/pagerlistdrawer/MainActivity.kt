@@ -8,6 +8,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
+import com.everest.pagerlistdrawer.extensions.showToast
 import com.everest.pagerlistdrawer.ui.User
 import com.google.android.material.tabs.TabLayout
 import com.google.gson.Gson
@@ -34,14 +35,13 @@ class MainActivity : AppCompatActivity() {
                 is UIState.Data -> showListOfUsers(uiState.data)
                 is UIState.Error -> showErrorMessage(uiState.message)
             }
-
         }
 
-        handleNavigationDrawer()
+        setUpNavigationDrawer()
 
     }
 
-    private fun handleNavigationDrawer() {
+    private fun setUpNavigationDrawer() {
         val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
         actionBarToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close)
         drawerLayout.addDrawerListener(actionBarToggle)
@@ -62,6 +62,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.nav_home -> showToast("Show Home Screen")
+            R.id.nav_gallery -> showToast("Show Gallery Screen")
+            R.id.nav_slideshow -> showToast("Show SlideShow Screen")
+        }
         if (actionBarToggle.onOptionsItemSelected(item)){
             return true
         }
